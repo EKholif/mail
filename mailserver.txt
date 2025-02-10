@@ -1,0 +1,15 @@
+mailserver/
+│── Dockerfile
+│── docker-compose.yml
+│── config/
+│   ├── postfix/
+│   │   ├── main.cf
+│   │   ├── master.cf
+│   ├── dovecot/
+│   │   ├── dovecot.conf
+│   │   ├── 10-auth.conf
+│   │   ├── 10-mail.conf
+│   ├── rspamd/
+│   │   ├── local.d/
+│   │   ├── override.d/
+│── entrypoint.sh
