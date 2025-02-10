@@ -10,7 +10,6 @@ RUN zypper --non-interactive clean --all && \
         postfix \
         dovecot \
         opendkim \
-        opendmarc \
         rspamd \
         mariadb-client \
         telnet && \
