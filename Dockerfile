@@ -2,16 +2,20 @@ FROM opensuse/leap:latest
 
 LABEL maintainer="admin@fungigrotto.com"
 
-# Install required packages
-RUN zypper refresh && zypper install -y \
-    postfix \
-    dovecot \
-    opendkim \
-    opendmarc \
-    rspamd \
-    mariadb-client \
-    telnet \
-    && rm -rf /var/lib/zypp
+# Update system and install required packages
+RUN zypper --non-interactive clean --all && \
+    zypper --non-interactive refresh && \
+    zypper --non-interactive update && \
+    zypper --non-interactive install -y \
+        postfix \
+        dovecot \
+        opendkim \
+        opendmarc \
+        rspamd \
+        mariadb-client \
+        telnet && \
+    zypper clean --all && \
+    rm -rf /var/lib/zypp /var/cache/zypp
 
 # Copy configuration files
 COPY config/postfix /etc/postfix/
